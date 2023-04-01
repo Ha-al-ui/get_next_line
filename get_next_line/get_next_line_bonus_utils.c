@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_bonus_utils.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halaoui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 22:33:49 by halaoui           #+#    #+#             */
-/*   Updated: 2023/04/01 20:05:03 by halaoui          ###   ########.fr       */
+/*   Created: 2023/04/01 20:35:34 by halaoui           #+#    #+#             */
+/*   Updated: 2023/04/01 20:35:37 by halaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -110,20 +110,3 @@ char	*ft_strdup( char *s1)
 	s[i] = '\0';
 	return (s);
 }
-// void leak_checker(void)
-// {
-// 		system("leaks a.out");
-// }
-// int main()
-//  {
-//   char str[] = "alsk";
-//   char s2[]= "dkald";
-//   printf("%s\n", ft_strjoin(str,s2));
-// 	atexit(leak_checker);
-// 	while(1)
-// 	{
-// 		pause();
-// 	}
-
-//   return 0;
-// }
