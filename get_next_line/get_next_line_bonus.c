@@ -28,7 +28,7 @@ int	check_line(char *string)
 	return (0);
 }
 
-char	*ft_ft(char **string, int j)
+char	*ft_res(char **string, int j)
 {
 	char	*s;
 
@@ -41,7 +41,7 @@ char	*ft_ft(char **string, int j)
 char	*ft_line(char **string, char **line, int j)
 {
 	*line = ft_substr(*string, 0, j);
-	*string = ft_ft(string, j);
+	*string = ft_res(string, j);
 	return (*line);
 }
 
@@ -52,8 +52,6 @@ char	*get_next_too(char *buff, int fd)
 	int			i;
 	int			j;
 
-	if (fd > OPEN_MAX)
-		return (NULL);
 	i = read(fd, buff, BUFFER_SIZE);
 	while (i >= 0)
 	{
@@ -65,7 +63,7 @@ char	*get_next_too(char *buff, int fd)
 		if (j != 0)
 			return (free(buff), ft_line(&string[fd], &line, j));
 		if (!i && string[fd])
-			return (free(buff), ft_ft(&string[fd], j));
+			return (free(buff), ft_res(&string[fd], j));
 		i = read(fd, buff, BUFFER_SIZE);
 	}
 	return (free(buff), free(string[fd]), string[fd] = NULL, NULL);
@@ -80,8 +78,6 @@ char	*get_next_line(int fd)
 	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buff)
 		return (NULL);
-	else if (buff != '\0')
-		return (get_next_too(buff, fd));
 	else
-		return (free(buff), NULL);
+		return (get_next_too(buff, fd));
 }

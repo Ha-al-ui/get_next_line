@@ -49,45 +49,29 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
-	char	*ns;
-	size_t	i;
+	size_t			i;
+	unsigned int	strl_len;
+	char			*p;
 
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	if ((ft_strlen(s + start)) < len)
-		len = ft_strlen(s + start);
-	ns = (char *)malloc(sizeof(char) * (len + 1));
+	strl_len = ft_strlen(s);
 	i = 0;
-	if (!ns)
-		return (0);
+	if (start > strl_len)
+		return (ft_strdup(""));
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	p = malloc(sizeof(char) * (len + 1));
+	if (!p)
+		return (NULL);
 	while (i < len)
 	{
-		ns[i] = *(s + start + i);
+		p[i] = s[start];
+		start++;
 		i++;
 	}
-	ft_strlcpy(ns, s + start, len + 1);
-	return (ns);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	unsigned int	l;
-	unsigned int	i;
-
-	i = 0;
-	l = ft_strlen(src);
-	if (dstsize > 0)
-	{
-		while ((src[i] != '\0') && (i < dstsize - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (l);
+	p[i] = '\0';
+	return (p);
 }
 
 char	*ft_strdup( char *s1)
